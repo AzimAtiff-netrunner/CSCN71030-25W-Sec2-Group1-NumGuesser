@@ -129,6 +129,9 @@
   <ItemGroup>
     <ClCompile Include="main.c" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="RNG_Module.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

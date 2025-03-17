@@ -128,6 +128,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.c" />
+    <ClCompile Include="RNG_Module.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RNG_Module.h" />

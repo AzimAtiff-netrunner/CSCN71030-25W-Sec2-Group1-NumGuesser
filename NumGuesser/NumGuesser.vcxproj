@@ -127,7 +127,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="FileHandling.c" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="Scoring.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="FileHandling.h" />
+    <ClInclude Include="Scoring.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

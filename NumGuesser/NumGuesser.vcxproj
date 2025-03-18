@@ -128,7 +128,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.c" />
-    <ClCompile Include="Test.cpp" />
+    <ClCompile Include="RNG_Module.c" />
+    <ClCompile Include="UserInput.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="RNG_Module.h" />
+    <ClInclude Include="UserInput.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

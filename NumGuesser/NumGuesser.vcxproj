@@ -127,12 +127,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="FileHandling.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="RNG_Module.c" />
+    <ClCompile Include="Scoring.c" />
     <ClCompile Include="UserInput.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="FileHandling.h" />
     <ClInclude Include="RNG_Module.h" />
+    <ClInclude Include="Scoring.h" />
     <ClInclude Include="UserInput.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -28,7 +28,7 @@ void CheckUserInput(int* UserInput, int RandNum) {//checks to make sure users in
 
 }
 
-void ValidateUserGuess(int* UserInput, int RandNum) {
+int ValidateUserGuess(int* UserInput, int RandNum) {
 	int UserTries = 0; 
 
 	while (*UserInput != RandNum) {//users can keep guessing until they guess correctly

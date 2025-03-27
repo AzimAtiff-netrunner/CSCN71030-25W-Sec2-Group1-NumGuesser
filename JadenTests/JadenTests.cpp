@@ -1,8 +1,8 @@
-#include "pch.h"  // Ensure pch.h is the first include (or stdafx.h if that's what your project uses)
+#include "pch.h"  
 #include "CppUnitTest.h"
 
 extern "C" {
-#include "../NumGuesser/Scoring.h"  // Adjust the relative path as necessary
+#include "../NumGuesser/Scoring.h"  
 }
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;

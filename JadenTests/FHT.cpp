@@ -1,10 +1,10 @@
 #define _CRT_SECURE_NO_WARNINGS
-#include "pch.h"  // Must be the first include
+#include "pch.h"  
 #include "CppUnitTest.h"
-#include <cstdio>  // For remove()
+#include <cstdio>  
 
 extern "C" {
-#include "../NumGuesser/FileHandling.h"  // Adjust the relative path as needed
+#include "../NumGuesser/FileHandling.h"
 }
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;

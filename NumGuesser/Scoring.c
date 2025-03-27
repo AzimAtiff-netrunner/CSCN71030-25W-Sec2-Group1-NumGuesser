@@ -3,6 +3,8 @@
 #include <time.h>
 #include "Scoring.h"
 
+#define _CRT_SECURE_NO_WARNINGS
+
 #define MAX_SCORE 100 // Define MAX_SCORE
 
 // Function to calculate score and return ScoreData struct

@@ -127,17 +127,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\UnitTest1\UnitTest1\FileHandlingTest_Unit.cpp" />
-    <ClCompile Include="..\..\UnitTest1\UnitTest1\FileHandling_Test.cpp" />
-    <ClCompile Include="..\..\UnitTest1\UnitTest1\pch.cpp" />
-    <ClCompile Include="..\..\UnitTest1\UnitTest1\ScoringTest.cpp" />
-    <ClCompile Include="..\..\UnitTest1\UnitTest1\ScoringTest_Unit.cpp" />
+    <ClCompile Include="FileHandlingTest_Unit.cpp" />
+    <ClCompile Include="FileHandling_Test.cpp" />
     <ClCompile Include="main.c" />
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="ScoringTest.cpp" />
+    <ClCompile Include="ScoringTest_Unit.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\UnitTest1\UnitTest1\FileHandling_Test.h" />
-    <ClInclude Include="..\..\UnitTest1\UnitTest1\pch.h" />
-    <ClInclude Include="..\..\UnitTest1\UnitTest1\ScoringTest.h" />
+    <ClInclude Include="FileHandling_Test.h" />
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="ScoringTest.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -6,13 +6,13 @@
 
 #include <string.h>  // Required for strcpy
 
-// ✅ Ensure Player is properly defined
+//Ensure Player is properly defined
 typedef struct Player {
     char name[50];
     int scores[MAX_ROUNDS];
 } Player;
 
-// ✅ Ensure function declarations are correctly formatted
+//Ensure function declarations are correctly formatted
 #ifdef __cplusplus
 extern "C" {
 #endif

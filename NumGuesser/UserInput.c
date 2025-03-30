@@ -28,20 +28,27 @@ void CheckUserInput(int* UserInput, int RandNum) {//checks to make sure users in
 
 }
 
-int ValidateUserGuess(int* UserInput, int RandNum) {
+char* ValidateUserGuess(int* UserInput, int RandNum) {
 	int UserTries = 0;
-
-	while (*UserInput != RandNum) {//users can keep guessing until they guess correctly
-		if (*UserInput < RandNum) {//compare the guess with the number 
-			printf("Your guess is LOWER than the actual number\n");//print hint
+	char* result = "";
+	while (*UserInput != RandNum) {  // Keep guessing until correct
+		if (*UserInput < RandNum) {
+			result = "Your guess is LOWER than the actual number";
 		}
 		else {
-			printf("Your guess is HIGHER than the actual number\n");//print hint
+			result = "Your guess is HIGHER than the actual number";
 		}
-		UserTries++;//add user attempt
-		GetUserInput(UserInput);
+
+		UserTries++;  // add attempt count
+
+		printf("%s\n", result);  // Display hint
+		printf("Type in your next guess: ");
+		scanf("%d", UserInput);  // Get new guess
 	}
-	printf("It took you %d tries to guess the correct number\n", UserTries + 1); //print their attempts at the end
+	UserTries++;  //add final attempt
+	printf("It took you %d tries to guess the correct number\n", UserTries);
+
+	return result;
 }
 
 int CheckRange(int* UserInput) {//verify user's input in the specified range

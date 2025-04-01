@@ -12,3 +12,6 @@ void init_rng() {
 int generate_random_number() {
     return (rand() % 100) + 1; // Random number: (0-99) + 1 = 1-100
 }
+int generate_random_hard_number() {
+    return (rand() % 500) + 1;
+}

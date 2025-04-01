@@ -79,10 +79,3 @@ void testScoringModule() {
     assert(strcmp(topScorer.name, "Bob") == 0);
     printf("Passed: findTopScorer()\n");
 }
-
-int main()
-{
-    testScoringModule();
-    printf("All Scoring Module Tests Passed!\n");
-    return 0;
-}

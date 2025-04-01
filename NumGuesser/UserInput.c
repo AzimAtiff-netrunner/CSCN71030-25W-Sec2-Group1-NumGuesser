@@ -27,6 +27,22 @@ void CheckUserInput(int* UserInput, int RandNum) {//checks to make sure users in
 	printf("Too many attempts. Come back later\n");
 
 }
+void CheckUserInput_Hard(int* UserInput, int RandNum) {//checks to make sure users input is within range
+	int UserTries = 0;
+
+	while (UserTries < USER_ATMPS) {//users will have 10 attempts to keep guessing if they keep inputting the wrong inputs
+		GetUserInput(UserInput);
+		if (!CheckHardRange(UserInput)) {
+			UserTries++;//count attempts
+			continue; //retry if invalid
+		}
+
+		ValidateUserGuess(UserInput, RandNum);
+		return;
+	}
+	printf("Too many attempts. Come back later\n");
+
+}
 
 char* ValidateUserGuess(int* UserInput, int RandNum) {
 	int UserTries = 0;
@@ -54,6 +70,14 @@ char* ValidateUserGuess(int* UserInput, int RandNum) {
 int CheckRange(int* UserInput) {//verify user's input in the specified range
 	if (*UserInput < 1 || *UserInput > 100) {
 		printf("Your guess is out of range. Must be between 1-100\n");
+		return 0;
+	}
+	return 1;
+
+}
+int CheckHardRange(int* UserInput) {//verify user's input in the specified range
+	if (*UserInput < 1 || *UserInput > 500) {
+		printf("Your guess is out of range. Must be between 1-500\n");
 		return 0;
 	}
 	return 1;

@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
 #include <stdlib.h>
 #include <string.h>
@@ -92,11 +93,4 @@ void testFileHandlingModule()
     file = fopen(FILENAME, "r");
     assert(file == NULL);
     printf("Passed: deleteScoreFile()\n");
-}
-
-int main()
-{
-    testFileHandlingModule();
-    printf("All File Handling Module Tests Passed!\n");
-    return 0;
 }

@@ -130,11 +130,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="FileHandling.c" />
-    <ClCompile Include="FileHandling.cpp" />
     <ClCompile Include="main.c" />
     <ClCompile Include="RNG_Module.c" />
     <ClCompile Include="Scoring.c" />
-    <ClCompile Include="ScoringTest.cpp" />
     <ClCompile Include="UserInput.c" />
   </ItemGroup>
   <ItemGroup>

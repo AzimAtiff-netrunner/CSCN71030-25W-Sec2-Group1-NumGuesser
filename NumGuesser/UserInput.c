@@ -3,7 +3,7 @@
 #include "UserInput.h"
 #include "RNG_Module.h"
 
-#define USER_ATMPS	10
+#define USER_ATMPS 10
 
 void GetUserInput(int* UserInput) {//prompts user for input
 	printf("\nPlease type in your guess:\n");
@@ -11,7 +11,8 @@ void GetUserInput(int* UserInput) {//prompts user for input
 	printf("YOUR guess was %d\n", *UserInput);
 }
 
-void CheckUserInput(int* UserInput, int RandNum) {//checks to make sure users input is within range
+// checks to make sure user's input is within range
+int CheckUserInput(int* UserInput, int RandNum) {
 	int UserTries = 0;
 
 	while (UserTries < USER_ATMPS) {//users will have 10 attempts to keep guessing if they keep inputting the wrong inputs
@@ -21,13 +22,16 @@ void CheckUserInput(int* UserInput, int RandNum) {//checks to make sure users in
 			continue; //retry if invalid
 		}
 
-		ValidateUserGuess(UserInput, RandNum);
-		return;
+		int tries = ValidateUserGuess(UserInput, RandNum); // get number of attempts
+		UserTries += tries;
+		return UserTries;
 	}
 	printf("Too many attempts. Come back later\n");
-
+	return USER_ATMPS;
 }
-void CheckUserInput_Hard(int* UserInput, int RandNum) {//checks to make sure users input is within range
+
+// checks to make sure user's input is within range (hard mode)
+int CheckUserInput_Hard(int* UserInput, int RandNum) {
 	int UserTries = 0;
 
 	while (UserTries < USER_ATMPS) {//users will have 10 attempts to keep guessing if they keep inputting the wrong inputs
@@ -37,34 +41,35 @@ void CheckUserInput_Hard(int* UserInput, int RandNum) {//checks to make sure use
 			continue; //retry if invalid
 		}
 
-		ValidateUserGuess(UserInput, RandNum);
-		return;
+		int tries = ValidateUserGuess(UserInput, RandNum); // get number of attempts
+		UserTries += tries;
+		return UserTries;
 	}
 	printf("Too many attempts. Come back later\n");
-
+	return USER_ATMPS;
 }
 
-char* ValidateUserGuess(int* UserInput, int RandNum) {
+// keeps prompting user until they guess correctly; returns number of tries
+int ValidateUserGuess(int* UserInput, int RandNum) {
 	int UserTries = 0;
-	char* result = "";
+
 	while (*UserInput != RandNum) {  // Keep guessing until correct
 		if (*UserInput < RandNum) {
-			result = "Your guess is LOWER than the actual number";
+			printf("Your guess is LOWER than the actual number\n");
 		}
 		else {
-			result = "Your guess is HIGHER than the actual number";
+			printf("Your guess is HIGHER than the actual number\n");
 		}
 
 		UserTries++;  // add attempt count
 
-		printf("%s\n", result);  // Display hint
 		printf("Type in your next guess: ");
 		scanf("%d", UserInput);  // Get new guess
 	}
-	UserTries++;  //add final attempt
+	UserTries++;  // add final correct attempt
 	printf("It took you %d tries to guess the correct number\n", UserTries);
 
-	return result;
+	return UserTries;
 }
 
 int CheckRange(int* UserInput) {//verify user's input in the specified range
@@ -73,13 +78,12 @@ int CheckRange(int* UserInput) {//verify user's input in the specified range
 		return 0;
 	}
 	return 1;
-
 }
+
 int CheckHardRange(int* UserInput) {//verify user's input in the specified range
 	if (*UserInput < 1 || *UserInput > 500) {
 		printf("Your guess is out of range. Must be between 1-500\n");
 		return 0;
 	}
 	return 1;
-
 }

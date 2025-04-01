@@ -30,12 +30,6 @@
     <ClCompile Include="UserInput.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="FileHandling.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ScoringTest.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RNG_Module.h">

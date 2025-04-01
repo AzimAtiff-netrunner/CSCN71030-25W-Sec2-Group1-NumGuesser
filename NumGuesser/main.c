@@ -1,71 +1,58 @@
-//NumGuesser By: Azim Atif, Jaden Mardini, Mohamed .H 
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include "UserInput.h"
 #include "RNG_Module.h"
-#include "Scoring.h"
 #include "FileHandling.h"
+#include "Scoring.h"
 
-int main(int argc, char* argv[]) {//REQ-SYS-020
-	init_rng(); // Seed the random number generator
+int main(int argc, char* argv[]) {
+    init_rng(); // Seed the random number generator
 
-	int UserGuess;
-	int UserChoice;
+    int UserGuess;
+    int UserChoice;
+    int history[HISTORY_SIZE];
 
-	printf("What difficulty would you like to play? \n");
-	printf("Type 1 for easy\n");
-	printf("Type 2 for hard\n");
-	scanf("%d", &UserChoice);
+    // Load previous score history from file
+    load_score_history(history, HISTORY_SIZE);
 
-	if (UserChoice == 1) {//easy path
-		// Generate random number
-		int RandNum = generate_random_number();
+    printf("What difficulty would you like to play? \n");
+    printf("Type 1 for easy\n");
+    printf("Type 2 for hard\n");
+    scanf("%d", &UserChoice);
 
-		// Display the generated number
-		printf("Guess the Random Number Generated(1-100)\n");
+    int attempts = 0;
 
-		// Check input and get number of attempts
-		int attempts = CheckUserInput(&UserGuess, RandNum);
+    if (UserChoice == 1) {
+        int RandNum = generate_random_number();
+        printf("Guess the Random Number Generated (1-100)\n");
 
-		// Load current high score and calculate new score
-		int oldHighScore = load_high_score();
-		ScoreData data = calculate_score_data(attempts, oldHighScore);
+        attempts = CheckUserInput(&UserGuess, RandNum);
+    }
+    else if (UserChoice == 2) {
+        int RandNum = generate_random_hard_number();
+        printf("Guess the Random Number Generated (1-500)\n");
 
-		// Display score and update high score if needed
-		if (data.currentScore > oldHighScore) {
-			save_high_score(data.currentScore);
-			printf("?? New high score: %d!\n", data.currentScore);
-		}
-		else {
-			printf("Your score: %d. Current high score: %d\n", data.currentScore, oldHighScore);
-		}
-	}
-	else if (UserChoice == 2) {//hard path
-		int RandNum = generate_random_hard_number();
+        attempts = CheckUserInput_Hard(&UserGuess, RandNum);
+    }
+    else {
+        printf("Invalid choice. Exiting program.\n");
+        return 1;
+    }
 
-		// Display the generated number
-		printf("Guess the Random Number Generated(1-500)\n");
+    // Check and update best score
+    int bestAttempts = load_high_score();
+    if (attempts < bestAttempts) {
+        save_high_score(attempts);
+        printf("New best score! You guessed the number in %d attempts.\n", attempts);
+    }
+    else {
+        printf("You took %d attempts. Best score so far is %d attempts.\n", attempts, bestAttempts);
+    }
 
-		// Check input and get number of attempts
-		int attempts = CheckUserInput_Hard(&UserGuess, RandNum);
+    // Update and display score history
+    update_score_history(history, attempts);
+    save_score_history(history, HISTORY_SIZE);
+    print_score_history(history);
 
-		// Load current high score and calculate new score
-		int oldHighScore = load_high_score();
-		ScoreData data = calculate_score_data(attempts, oldHighScore);
-
-		// Display score and update high score if needed
-		if (data.currentScore > oldHighScore) {
-			save_high_score(data.currentScore);
-			printf("?? New high score: %d!\n", data.currentScore);
-		}
-		else {
-			printf("Your score: %d. Current high score: %d\n", data.currentScore, oldHighScore);
-		}
-	}
-	else {
-		printf("Get out\n");
-		return 1;
-	}
-
-	return 0;
+    return 0;
 }

@@ -1,27 +1,20 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
 #include "Scoring.h"
 
-#define _CRT_SECURE_NO_WARNINGS
-
-#define MAX_SCORE 100 // Define MAX_SCORE
-
-// Function to calculate score and return ScoreData struct
-ScoreData calculate_score_data(int attempts, int highScore) {
-    ScoreData data;
-    data.currentScore = (attempts > 0) ? MAX_SCORE / attempts : 0;
-    data.highScore = highScore;
-    return data;
+// Updates the score history array by shifting left and adding new score at the end
+void update_score_history(int* history, int newScore) {
+    for (int i = 0; i < HISTORY_SIZE - 1; i++) {
+        history[i] = history[i + 1];
+    }
+    history[HISTORY_SIZE - 1] = newScore;
 }
 
-// Function to generate a random bonus
-int get_random_bonus() {
-    srand(time(NULL)); // Seed RNG
-    return rand() % 50; // Bonus between 0-49
-}
-
-// Function to calculate score using a pointer
-void calculate_score_ptr(int attempts, int* score) {
-    *score = (attempts > 0) ? MAX_SCORE / attempts : 0;
+// Prints all non-negative scores in the history
+void print_score_history(int* history) {
+    printf("\nScore history (most recent last):\n");
+    for (int i = 0; i < HISTORY_SIZE; i++) {
+        if (history[i] >= 0) {
+            printf("Game %d: %d attempts\n", i + 1, history[i]);
+        }
+    }
 }

@@ -1,19 +1,19 @@
 #pragma once
 
-// Prompts user to enter a guess
+// Prompts the user to enter a guess
 void GetUserInput(int* UserInput);
 
-// Easy mode: checks and validates user input (1-100), returns number of attempts
+// Easy mode input validation (1–100), returns number of attempts
 int CheckUserInput(int* UserInput, int RandNum);
 
-// Hard mode: checks and validates user input (1-500), returns number of attempts
+// Hard mode input validation (1–500), returns number of attempts
 int CheckUserInput_Hard(int* UserInput, int RandNum);
 
-// Validates user guesses against the random number until correct, returns number of tries
+// Validates guess until correct, returns number of tries taken
 int ValidateUserGuess(int* UserInput, int RandNum);
 
-// Verifies that the input is between 1 and 100
+// Checks if the guess is within easy mode range
 int CheckRange(int* UserInput);
 
-// Verifies that the input is between 1 and 500
+// Checks if the guess is within hard mode range
 int CheckHardRange(int* UserInput);

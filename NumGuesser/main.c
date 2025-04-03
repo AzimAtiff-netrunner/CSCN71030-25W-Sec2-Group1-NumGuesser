@@ -32,7 +32,7 @@ int main(int argc, char* argv[]) {
     FILE* file = fopen(saveFile, "r");
     if (file == NULL) {
         printf("Error: Could not open file %s\n", saveFile);
-        return 1;
+        exit (1);
     }
 
     fclose(file);

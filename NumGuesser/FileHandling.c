@@ -1,5 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include "FileHandling.h"
 
 #define HIGH_SCORE_FILE "high_score.txt"
@@ -25,12 +27,28 @@ int load_high_score() {
     return attempts;
 }
 
-// Save the score history array to a file
+// Save the score history array to a file using a dynamically allocated buffer
 void save_score_history(int* history, int size) {
     FILE* file = fopen(SCORE_HISTORY_FILE, "w");
     if (file) {
-        for (int i = 0; i < size; i++) {
-            fprintf(file, "%d\n", history[i]);
+        // Estimate maximum buffer size: assume up to 16 characters per score (including newline)
+        int buf_size = size * 16;
+        char* buffer = (char*)malloc(buf_size);
+        if (buffer == NULL) {
+            // Fallback: if malloc fails, write directly to file
+            for (int i = 0; i < size; i++) {
+                fprintf(file, "%d\n", history[i]);
+            }
+        }
+        else {
+            buffer[0] = '\0'; // initialize buffer as an empty string
+            for (int i = 0; i < size; i++) {
+                char line[16];
+                snprintf(line, sizeof(line), "%d\n", history[i]);
+                strcat(buffer, line);
+            }
+            fputs(buffer, file);
+            free(buffer);  // free the allocated memory
         }
         fclose(file);
     }

@@ -2,8 +2,13 @@
 
 #define HISTORY_SIZE 5
 
-// Function to update the score history array
-void update_score_history(int* history, int newScore);
+// Struct to hold the score history array
+typedef struct {
+    int scores[HISTORY_SIZE];
+} ScoreHistory;
 
-// Function to display the score history
-void print_score_history(int* history);
+// Updates the score history by shifting scores left and adding a new score at the end
+void update_score_history(ScoreHistory* history, int newScore);
+
+// Displays the score history
+void print_score_history(const ScoreHistory* history);
